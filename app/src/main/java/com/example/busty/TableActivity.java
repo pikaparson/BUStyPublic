@@ -33,7 +33,7 @@ public class TableActivity extends AppCompatActivity {
 
     void create_db(){
         File file = new File(DB_PATH);
-        if (!file.exists() || file.exists()) {
+        if (file.exists()) {
             //получаем локальную бд как поток
             try(InputStream myInput = getApplicationContext().getAssets().open(DATABASE_NAME);
                 // Открываем пустую бд
@@ -66,6 +66,7 @@ public class TableActivity extends AppCompatActivity {
         db = open();
 
         Cursor cursor = db.rawQuery( "select * from products", null );
+
 
         text1 = findViewById(R.id.textView1);
         cursor.moveToFirst();
